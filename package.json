@@ -1,0 +1,43 @@
+{
+  "name": "mckesson_healthcare-test-framework",
+  "version": "1.0.0",
+  "description": "Test automation framework: Playwright (UI/API), Cucumber BDD and Vitest (DB) against a PostgreSQL backend.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test:unit && npm run test:db && npm run test:api && npm run test:ui && npm run test:bdd",
+    "test:unit": "vitest run --exclude src/db/** --passWithNoTests",
+    "test:db": "vitest run src/db/tests",
+    "test:ui": "playwright test --project=ui-chromium",
+    "test:ui:headed": "playwright test --project=ui-chromium --headed",
+    "test:api": "playwright test --project=api",
+    "test:bdd": "cucumber-js",
+    "test:all": "npm test",
+    "report:playwright": "playwright show-report test-results/playwright-report",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@cucumber/cucumber": "^13.2.1",
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.6.2",
+    "@types/pg": "^8.11.10",
+    "eslint": "^9.15.0",
+    "eslint-config-prettier": "^9.1.0",
+    "playwright": "^1.63.0",
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.15.0",
+    "vitest": "^5.0.1"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.2",
+    "pg": "^8.13.1",
+    "zod": "^3.24.1"
+  }
+}
